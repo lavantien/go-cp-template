@@ -18,6 +18,7 @@ func main() {
 	scn := bufio.NewScanner(strings.NewReader(str))
 	distance := 0
 	depth := 0
+	aim := 0
 	for scn.Scan() {
 		var cmd string
 		var val int
@@ -25,10 +26,11 @@ func main() {
 		switch cmd {
 		case "forward":
 			distance += val
+			depth += aim * val
 		case "up":
-			depth -= val
+			aim -= val
 		case "down":
-			depth += val
+			aim += val
 		}
 	}
 	rs := distance * depth
