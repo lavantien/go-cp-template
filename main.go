@@ -36,10 +36,13 @@ func main() {
 }
 
 func solution(arr []int, n int) (rs int) {
-	for i := 1; i < n; i++ {
-		if arr[i] > arr[i-1] {
+	prevSum := arr[0] + arr[1] + arr[2]
+	for i := 3; i < n; i++ {
+		currSum := arr[i-2] + arr[i-1] + arr[i]
+		if currSum > prevSum {
 			rs++
 		}
+		prevSum = currSum
 	}
 	return
 }
